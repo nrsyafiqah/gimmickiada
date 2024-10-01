@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimmick</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Fullscreen background video */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Centered gimmick video */
+        .gimmick-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            /* transform: translate(-50%, -50%);
+            max-width: 600px; */
+        }
+
+        .gimmick-video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border: 5px solid white;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            padding: 15px 0;
+            font-size: 20px;
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            /* align-content: center; */
+            text-align: center;
+            height: 450px;
+        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gimmick video -->
+    <div class="gimmick-container" id="gimmick">
+        <video id="gVideo" class="gimmick-video" autoplay muted playinline loop>
+            <source src="video/thumbprint2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="playButton" class="play-button"></button>
+    </div>
+
+    <!-- montage -->
+    <video id="mVideo" class="montage" style="display:none;">
+        <source src="video/montage.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const playButton = document.getElementById('playButton');
+        const montageVideo = document.getElementById('mVideo');
+        const gimmick = document.getElementById('gimmick');
+
+        playButton.addEventListener('click', () => {
+            montageVideo.style.display = 'block';
+            montageVideo.play();
+            gimmick.style.display = 'none';
+        });
+
+        // const video2 = document.getElementById('mVideo');
+        // document.body.addEventListener('click', () => {
+        //     video.play();
+        // });
+    </script>
+
+</body>
+</html>
